@@ -45,6 +45,41 @@ export const constantRoutes = [
 
   {
     path: '/',
+    redirect: '/index'
+  },
+
+  {
+    path: '/explore',
+    component: () => import('@/views/common/ExploreView.vue')
+  },
+
+  {
+    path: '/nearby',
+    component: () => import('@/views/common/NearbyView.vue')
+  },
+
+  {
+    path: '/search',
+    component: () => import('@/views/common/SearchView.vue')
+  },
+
+  {
+    path: '/test',
+    component: () => import('@/views/common/TestView.vue')
+  },
+
+  {
+    path: '/my',
+    component: () => import('@/views/common/MyView.vue')
+  },
+
+  {
+    path: '/login-success',
+    component: () => import('@/views/info/LoginSuccess.vue')
+  },
+
+  {
+    path: '/',
     component: Layout,
     redirect: '/dashboard',
     children: [{
