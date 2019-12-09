@@ -1,14 +1,10 @@
 <template>
   <div>
-    <el-menu
-      default-active="true"
-      class="el-menu"
-      mode="horizontal"
-    >
+    <el-menu default-active="true" class="el-menu" mode="horizontal">
       <el-menu-item class="menu-logo-holder">
         <img class="menu-logo" src="@/assets/menu-logo.png">
       </el-menu-item>
-      <el-menu-item index="/index">首页</el-menu-item>
+      <el-menu-item index="/default">首页</el-menu-item>
       <el-menu-item index="/explore">浏览</el-menu-item>
       <el-menu-item index="/nearby">附近</el-menu-item>
       <el-menu-item v-if="isLogin === true" index="/login" class="disable-element-hover">个人资料</el-menu-item>
@@ -21,14 +17,6 @@
 <script>
 export default {
   data() {
-    false
-  },
-  mounted: function() {
-    if (this.$store.state.account.token !== null) {
-      this.isLogin = true
-    } else {
-      this.isLogin = false
-    }
   }
 }
 </script>
