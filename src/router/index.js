@@ -44,7 +44,7 @@ export const constantRoutes = [
   },
 
   {
-    path: '/default',
+    path: '/index',
     component: () => import('@/views/common/IndexView.vue')
   },
 

@@ -6,7 +6,7 @@
         <img class="menu-logo" src="@/assets/menu-logo.png">
       </el-menu-item>
 
-      <a href="/">
+      <a href="/index">
         <div class="float-left">
           <el-menu-item class="disable-element-hover flo">首页</el-menu-item>
         </div>
