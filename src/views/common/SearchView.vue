@@ -1,196 +1,203 @@
 <template>
-  <div>
-    <navbar />
-    <el-scrollbar style="height:100%">
-      <div class="body">
+  <div class="main-search">
+    <main-header />
+
+    <div class="dropdown-select">
+      <div class="condition">
         <div>
-          <div class="condition">
-            <div>
-              <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
-            </div>
-            <div>
-              <span class="title">选择朝代</span>
-            </div>
-            <div>
-              <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
-            </div>
-          </div>
-          <div class="select">
-            <el-select
-              v-model="value1"
-              class="select-width"
-              placeholder="请选择朝代"
-              @change="change()"
-            >
-              <el-option
-                v-for="item1 in optionsDynasty"
-                :key="item1.value"
-                :label="item1.label"
-                :value="item1.value"
-              />
-            </el-select>
-          </div>
+          <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
         </div>
         <div>
-          <div class="condition">
-            <div>
-              <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
-            </div>
-            <div>
-              <span class="title">选择时期</span>
-            </div>
-            <div>
-              <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
-            </div>
-          </div>
-          <div class="select">
-            <el-select
-              v-model="value2"
-              class="select-width"
-              placeholder="请选择时期"
-              @change="change()"
-            >
-              <el-option
-                v-for="item2 in optionsPeriod"
-                :key="item2.value"
-                :label="item2.label"
-                :value="item2.value"
-              />
-            </el-select>
-          </div>
+          <span class="title">选择朝代</span>
         </div>
         <div>
-          <div class="condition">
-            <div>
-              <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
-            </div>
-            <div>
-              <span class="title">选择地域</span>
-            </div>
-            <div>
-              <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
-            </div>
-          </div>
-          <div class="select">
-            <el-select
-              v-model="value3"
-              class="select-width"
-              placeholder="请选择地域"
-              @change="change()"
-            >
-              <el-option
-                v-for="item in optionsArea"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
-            </el-select>
-          </div>
-        </div>
-        <div>
-          <div class="condition">
-            <div>
-              <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
-            </div>
-            <div>
-              <span class="title">选择材质</span>
-            </div>
-            <div>
-              <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
-            </div>
-          </div>
-          <div class="select">
-            <el-select
-              v-model="value4"
-              class="select-width"
-              placeholder="请选择材质"
-              @change="change()"
-            >
-              <el-option
-                v-for="item in optionsMaterial"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
-            </el-select>
-          </div>
-        </div>
-        <div>
-          <div class="condition">
-            <div>
-              <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
-            </div>
-            <div>
-              <span class="title">选择用途</span>
-            </div>
-            <div>
-              <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
-            </div>
-          </div>
-          <div class="select">
-            <el-select
-              v-model="value5"
-              class="select-width"
-              placeholder="请选择用途"
-              @change="change()"
-            >
-              <el-option
-                v-for="item in optionsUsage"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
-            </el-select>
-          </div>
-        </div>
-        <div>
-          <div class="condition">
-            <div>
-              <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
-            </div>
-            <div>
-              <span class="title">选择博物馆</span>
-            </div>
-            <div>
-              <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
-            </div>
-          </div>
-          <div class="select">
-            <el-select
-              v-model="value6"
-              class="select-width"
-              placeholder="请选择博物馆"
-              @change="change()"
-            >
-              <el-option
-                v-for="item in optionsMuseum"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
-            </el-select>
-          </div>
-        </div>
-        <div class="search-div">
-          <el-button
-            type="primary"
-            size="medium "
-            class="search-button"
-          >搜索</el-button>
+          <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
         </div>
       </div>
-    </el-scrollbar>
-    <pcfooter />
+
+      <div class="select">
+        <el-select
+          v-model="value1"
+          class="select-width"
+          placeholder="请选择朝代"
+          @change="change()"
+        >
+          <el-option
+            v-for="item1 in optionsDynasty"
+            :key="item1.value"
+            :label="item1.label"
+            :value="item1.value"
+          />
+        </el-select>
+      </div>
+    </div>
+
+    <div class="dropdown-select">
+
+      <div class="condition">
+        <div>
+          <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
+        </div>
+        <div>
+          <span class="title">选择时期</span>
+        </div>
+        <div>
+          <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
+        </div>
+      </div>
+
+      <div class="select">
+        <el-select
+          v-model="value2"
+          class="select-width"
+          placeholder="请选择时期"
+          @change="change()"
+        >
+          <el-option
+            v-for="item2 in optionsPeriod"
+            :key="item2.value"
+            :label="item2.label"
+            :value="item2.value"
+          />
+        </el-select>
+      </div>
+    </div>
+
+    <div class="dropdown-select">
+      <div class="condition">
+        <div>
+          <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
+        </div>
+        <div>
+          <span class="title">选择地域</span>
+        </div>
+        <div>
+          <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
+        </div>
+      </div>
+      <div class="select">
+        <el-select
+          v-model="value3"
+          class="select-width"
+          placeholder="请选择地域"
+          @change="change()"
+        >
+          <el-option
+            v-for="item in optionsArea"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </div>
+    </div>
+
+    <div class="dropdown-select">
+      <div class="condition">
+        <div>
+          <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
+        </div>
+        <div>
+          <span class="title">选择材质</span>
+        </div>
+        <div>
+          <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
+        </div>
+      </div>
+      <div class="select">
+        <el-select
+          v-model="value4"
+          class="select-width"
+          placeholder="请选择材质"
+          @change="change()"
+        >
+          <el-option
+            v-for="item in optionsMaterial"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </div>
+    </div>
+
+    <div class="dropdown-select">
+      <div class="condition">
+        <div>
+          <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
+        </div>
+        <div>
+          <span class="title">选择用途</span>
+        </div>
+        <div>
+          <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
+        </div>
+      </div>
+      <div class="select">
+        <el-select
+          v-model="value5"
+          class="select-width"
+          placeholder="请选择用途"
+          @change="change()"
+        >
+          <el-option
+            v-for="item in optionsUsage"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </div>
+    </div>
+
+    <div class="dropdown-select">
+      <div class="condition">
+        <div>
+          <img class="wing-size arrow-left" src="@/assets/search/slogen.png">
+        </div>
+        <div>
+          <span class="title">选择博物馆</span>
+        </div>
+        <div>
+          <img class="wing-size arrow-right" src="@/assets/search/slogen.png">
+        </div>
+      </div>
+      <div class="select">
+        <el-select
+          v-model="value6"
+          class="select-width"
+          placeholder="请选择博物馆"
+          @change="change()"
+        >
+          <el-option
+            v-for="item in optionsMuseum"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </div>
+    </div>
+
+    <div class="search-div">
+      <el-button
+        type="primary"
+        size="medium "
+        class="search-button"
+      >搜索</el-button>
+    </div>
+
+    <main-footer />
   </div>
 </template>
 
 <script>
-import navbar from '@/components/ShowNav'
-import pcfooter from '@/components/ShowFooter'
+import MainHeader from '@/components/MainHeader'
+import MainFooter from '@/components/MainFooter'
 export default {
   components: {
-    navbar,
-    pcfooter
+    MainHeader,
+    MainFooter
   },
   data() {
     return {
@@ -335,11 +342,14 @@ export default {
 }
 </script>
 
-<style>
-.body {
-  width: 100%;
-  margin-top: 3%;
+<style lang="scss" scoped>
+.main {
+  &-search {
+    height: 100%;
+    position: relative;
+  }
 }
+
 .condition {
   display: flex;
   text-align: center;
@@ -347,40 +357,52 @@ export default {
   margin-top: 2%;
   font-size: 1em;
 }
-.wing-size{
+
+.wing-size {
   height: 13px;
   width: 40px;
   display: inline-block;
 }
-.arrow-left {
-  padding-top: 2px;
-  float: left;
-  margin-right: 5px;
+
+.arrow {
+  &-left {
+    padding-top: 2px;
+    float: left;
+    margin-right: 5px;
+  }
+
+  &-right {
+    transform: scaleX(-1);
+    float: left;
+    margin-top: 2px;
+    margin-left: 5px;
+  }
 }
-.arrow-right {
-  transform: scaleX(-1);
-  float: left;
-  margin-top: 2px;
-  margin-left: 5px;
-}
+
 .title {
   line-height: 15px;
   float: left;
 }
+
 .select {
   text-align: center;
   margin-top: 1.5%;
+
+  &-width {
+    width: 50%;
+  }
 }
-.select-width {
-  width: 50%;
-}
-.search-div {
-  margin-top: 2%;
-  text-align: center;
-  margin-bottom: 6%;
-}
-.search-button {
-  width: 15%;
-  padding: 1% 3%;
+
+.search {
+  &-div {
+    margin-top: 2%;
+    text-align: center;
+    margin-bottom: 6%;
+  }
+
+  &-button {
+    width: 15%;
+    padding: 1% 3%;
+  }
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
-
-  <div class="mainfooter">
-    <div class="viewtimes">
+  <div class="main-footer">
+    <div class="view-times">
       <div class="views">网站访问量</div>
       <div class="num">1</div>
       <div class="num">2</div>
@@ -18,8 +17,10 @@
   </div>
 </template>
 
-<style>
-  .mainfooter {
+<style lang="scss" scoped>
+  .main-footer {
+    position: relative;
+    bottom: 0px;
     overflow: hidden;
     height: 180px;
     width: 100%;
@@ -31,7 +32,7 @@
     font-size: 14px;
     letter-spacing: 2.25px;
   }
-  .viewtimes {
+  .view-times {
     justify-content: center;
     align-items: center;
     display: flex;

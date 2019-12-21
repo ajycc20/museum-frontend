@@ -1,62 +1,74 @@
 <template>
-  <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+  <div class="main-login">
+    <main-header />
+    <div class="login-container">
 
-      <div class="title-container">
-        <h3 class="title">Login Form</h3>
-      </div>
+      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
-      <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input
-          ref="username"
-          v-model="loginForm.username"
-          placeholder="Username"
-          name="username"
-          type="text"
-          tabindex="1"
-          auto-complete="on"
-        />
-      </el-form-item>
+        <div class="title-container">
+          <h3 class="title">Login Form</h3>
+        </div>
 
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password" />
-        </span>
-        <el-input
-          :key="passwordType"
-          ref="password"
-          v-model="loginForm.password"
-          :type="passwordType"
-          placeholder="Password"
-          name="password"
-          tabindex="2"
-          auto-complete="on"
-          @keyup.enter.native="handleLogin"
-        />
-        <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
-        </span>
-      </el-form-item>
+        <el-form-item prop="username">
+          <span class="svg-container">
+            <svg-icon icon-class="user" />
+          </span>
+          <el-input
+            ref="username"
+            v-model="loginForm.username"
+            placeholder="Username"
+            name="username"
+            type="text"
+            tabindex="1"
+            auto-complete="on"
+          />
+        </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+        <el-form-item prop="password">
+          <span class="svg-container">
+            <svg-icon icon-class="password" />
+          </span>
+          <el-input
+            :key="passwordType"
+            ref="password"
+            v-model="loginForm.password"
+            :type="passwordType"
+            placeholder="Password"
+            name="password"
+            tabindex="2"
+            auto-complete="on"
+            @keyup.enter.native="handleLogin"
+          />
+          <span class="show-pwd" @click="showPwd">
+            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          </span>
+        </el-form-item>
 
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: any</span>
-      </div>
+        <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
-    </el-form>
+        <div class="tips">
+          <span style="margin-right:20px;">username: admin</span>
+          <span> password: any</span>
+        </div>
+
+      </el-form>
+
+    </div>
+    <main-footer />
   </div>
 </template>
 
 <script>
 import { validUsername } from '@/utils/validate'
+import MainHeader from '@/components/MainHeader'
+import MainFooter from '@/components/MainFooter'
 
 export default {
   name: 'Login',
+  components: {
+    MainHeader,
+    MainFooter
+  },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -130,7 +142,7 @@ export default {
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
 $bg:#283443;
-$light_gray:#fff;
+$light_gray:rgb(107, 85, 85);
 $cursor: #fff;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
@@ -173,9 +185,13 @@ $cursor: #fff;
 </style>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
-$dark_gray:#889aa4;
-$light_gray:#eee;
+$bg:#dee4eb;
+$dark_gray:#485358;
+$light_gray:rgb(58, 48, 48);
+
+.main-login {
+  height: calc(100% - 241px);
+}
 
 .login-container {
   min-height: 100%;
@@ -194,7 +210,7 @@ $light_gray:#eee;
 
   .tips {
     font-size: 14px;
-    color: #fff;
+    color: rgb(88, 74, 74);
     margin-bottom: 10px;
 
     span {

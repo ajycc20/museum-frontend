@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="main-header">
     <el-menu class="el-menu" mode="horizontal">
 
       <el-menu-item class="menu-logo-holder">
         <img class="menu-logo" src="@/assets/menu-logo.png">
       </el-menu-item>
 
-      <a href="/index">
+      <a href="/">
         <div class="float-left">
           <el-menu-item class="disable-element-hover flo">首页</el-menu-item>
         </div>
@@ -30,9 +30,15 @@
         </div>
       </a>
 
-      <a v-else href="/my">
+      <a v-else v-permission="['editor']" href="/my">
         <div class="float-right">
           <el-menu-item class="disable-element-hover">个人资料</el-menu-item>
+        </div>
+      </a>
+
+      <a v-permission="['admin']" href="/dashboard">
+        <div class="float-right">
+          <el-menu-item class="disable-element-hover">后台管理</el-menu-item>
         </div>
       </a>
 
@@ -54,26 +60,39 @@
 </template>
 
 <script>
-// import request from '@/utils/require';
+import { mapGetters } from 'vuex'
+import permission from '@/directive/permission'
+
 export default {
+  directives: {
+    permission
+  },
   data() {
     return {
-      isActive: '1',
-      isRouter: true,
       isLogin: false
     }
   },
-  mounted: function() {
-    if (localStorage.getItem('USER_TOKEN') !== null) {
-      this.isLogin = true
-    } else {
-      this.isLogin = false
+  computed: {
+    ...mapGetters([
+      'token'
+    ])
+  },
+  mounted() {
+    this.loadUser()
+  },
+  methods: {
+    loadUser() {
+      if (this.token) {
+        this.isLogin = true
+      } else {
+        this.isLogin = false
+      }
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .float-left {
   float: left;
 }

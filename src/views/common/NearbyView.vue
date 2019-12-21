@@ -1,68 +1,81 @@
 <template>
-  <div>
-    <index-nav />
-    <div class="container">
+  <div class="main-nearby">
+    <main-header />
 
-      <el-row>
-        <div id="baidu-map">fff
-        </div>
+    <el-row>
+      <div id="baidu-map">a</div>
+    </el-row>
+
+    <h1 class="title">附近的博物馆</h1>
+
+    <div class="museum">
+
+      <el-row gutter="0" type="flex" justify="center">
+
+        <el-col :span="10">
+          <a href="#" class="img-museum">
+            <img src="@/assets/index/Mask1.png" class="famensi">
+          </a>
+        </el-col>
+
+        <el-col :span="14">
+          <div class="museum-text">
+            <div class="museum-title">
+              <h3 style="display: inline;font-weight: lighter">法门寺</h3>
+              <div class="distance" style="display: inline;margin-left: 1rem;font-size: 12px;">1.4km</div>
+              <el-button size="mini" class="visit">参观</el-button>
+            </div>
+
+            <div class="museum-intro">法门寺（Famen Temple），又名“真身宝塔”，位于炎帝故里、青铜器之乡——宝鸡市，全国重点文物保护单位 [1]
+              。据传始建于东汉明帝十一年（公元68年），约有1700多年历史，素有“关中塔庙始祖”之称，周魏以前称作“阿育王寺”，隋文帝时改称“成实道场”，唐高祖时改名“法门寺”。法门寺被誉为皇家寺庙，因安置释迦牟尼佛指骨舍利而成为举国仰望的佛教圣地。法门寺佛塔被誉为“护国真身宝塔”。寺庙所在的法门寺文化景区为国家AAAAA级旅游景区。
+            </div>
+          </div>
+        </el-col>
+
       </el-row>
-      <div class="title"><h1>附近的博物馆</h1></div>
-      <div class="museum">
-        <el-row gutter="0" type="flex" justify="center">
-          <el-col :span="10">
-            <a href="#" class="img-museum"><img src="@/assets/index/Mask1.png" class="famensi"></a>
-          </el-col>
-          <el-col :span="14">
-            <div class="museum-text">
-              <div class="museum-title">
-                <h3 style="display: inline;font-weight: lighter">法门寺</h3>
-                <div class="distance" style="display: inline;margin-left: 1rem;font-size: 12px;">1.4km</div>
-                <el-button size="mini" class="visit">参观</el-button>
-              </div>
-
-              <div class="museum-intro">法门寺（Famen Temple），又名“真身宝塔”，位于炎帝故里、青铜器之乡——宝鸡市，全国重点文物保护单位 [1]
-                。据传始建于东汉明帝十一年（公元68年），约有1700多年历史，素有“关中塔庙始祖”之称，周魏以前称作“阿育王寺”，隋文帝时改称“成实道场”，唐高祖时改名“法门寺”。法门寺被誉为皇家寺庙，因安置释迦牟尼佛指骨舍利而成为举国仰望的佛教圣地。法门寺佛塔被誉为“护国真身宝塔”。寺庙所在的法门寺文化景区为国家AAAAA级旅游景区。
-              </div>
-            </div>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="museum">
-        <el-row gutter="0" type="flex" justify="center">
-          <el-col :span="10">
-            <a href="#" class="img-museum"><img src="@/assets/index/Mask1.png" class="famensi"></a>
-          </el-col>
-          <el-col :span="14">
-            <div class="museum-text">
-              <div class="museum-title">
-                <h3 style="display: inline;font-weight: lighter">法门寺</h3>
-                <div class="distance" style="display: inline;margin-left: 1rem;font-size: 12px;">1.4km</div>
-                <el-button size="mini" class="visit">参观</el-button>
-              </div>
-
-              <div class="museum-intro">法门寺（Famen Temple），又名“真身宝塔”，位于炎帝故里、青铜器之乡——宝鸡市，全国重点文物保护单位 [1]
-                。据传始建于东汉明帝十一年（公元68年），约有1700多年历史，素有“关中塔庙始祖”之称，周魏以前称作“阿育王寺”，隋文帝时改称“成实道场”，唐高祖时改名“法门寺”。法门寺被誉为皇家寺庙，因安置释迦牟尼佛指骨舍利而成为举国仰望的佛教圣地。法门寺佛塔被誉为“护国真身宝塔”。寺庙所在的法门寺文化景区为国家AAAAA级旅游景区。
-              </div>
-            </div>
-          </el-col>
-        </el-row>
-      </div>
 
     </div>
-    <index-footer />
-  </div>
 
+    <div class="museum">
+
+      <el-row gutter="0" type="flex" justify="center">
+
+        <el-col :span="10">
+          <a href="#" class="img-museum"><img src="@/assets/index/Mask1.png" class="famensi"></a>
+        </el-col>
+
+        <el-col :span="14">
+          <div class="museum-text">
+
+            <div class="museum-title">
+              <h3 style="display: inline;font-weight: lighter">法门寺</h3>
+              <div class="distance" style="display: inline;margin-left: 1rem;font-size: 12px;">1.4km</div>
+              <el-button size="mini" class="visit">参观</el-button>
+            </div>
+
+            <div class="museum-intro">法门寺（Famen Temple），又名“真身宝塔”，位于炎帝故里、青铜器之乡——宝鸡市，全国重点文物保护单位 [1]
+              。据传始建于东汉明帝十一年（公元68年），约有1700多年历史，素有“关中塔庙始祖”之称，周魏以前称作“阿育王寺”，隋文帝时改称“成实道场”，唐高祖时改名“法门寺”。法门寺被誉为皇家寺庙，因安置释迦牟尼佛指骨舍利而成为举国仰望的佛教圣地。法门寺佛塔被誉为“护国真身宝塔”。寺庙所在的法门寺文化景区为国家AAAAA级旅游景区。
+            </div>
+
+          </div>
+        </el-col>
+
+      </el-row>
+
+    </div>
+
+    <main-footer />
+  </div>
 </template>
 
 <script type="javascript">
-import NavMenu from '@/components/ShowNav'
-import Footer from '@/components/ShowFooter'
+import MainHeader from '@/components/MainHeader'
+import MainFooter from '@/components/MainFooter'
 
 export default {
   components: {
-    'index-nav': NavMenu,
-    'index-footer': Footer
+    MainHeader,
+    MainFooter
   },
   data() {
 
@@ -118,90 +131,81 @@ export default {
 }
 
 </script>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    div {
-        display: block;
-    }
-
-    .container {
-        justify-content: center;
-        align-items: center;
-    }
-
-    el-row {
-        margin-bottom: 20px;
-
-        /* &:last-child {
-            margin-bottom: 0;
-        } */
-    }
-
-    el-col {
-        border-radius: 4px;
-    }
-
-    #baidu-map {
-        height: 682px;
-        width: 66%;
-        background-color: beige;
-        margin: 30px auto;
-        border-radius: 30px;
-    }
-
-    .title {
-        font-family: "华文楷体";
-        width: 1167px;
-        margin: 1em auto;
-        text-align: center;
-        letter-spacing: 0.5rem;
-    }
-
-    .museum {
-        color: #ffffff;
-        margin: 1rem auto;
-        width: 66%;
-        height: 200px;
-    }
-
-    .img-museum {
-        width: 100%;
-        height: auto;
-    }
-    .famensi{
-        width: 100%;
-        height: auto;
-        max-height: 200px;
-        border-radius: 0;
+<style lang="scss" scoped>
+div {
+  display: block;
 }
-    .museum-text {
-        padding: 1rem;
-        background-color: #772a10;
-        height: 168px;
-        overflow: auto;
-    }
-    .museum-title{
-        margin: 1rem 0;
-        display: inline-block;
-        width: 100%;
-    }
-    .el-button,.el-button:hover,.el-button:active,.el-button:focus{
-        background:none;
-        color: #ffffff;
-        border-color:  #ffffff;
-    }
-    .visit{
-        color: #ffffff;
-        float: right;
-        }
-.museum-intro{
+
+#baidu-map {
+  height: 682px;
+  width: 66%;
+  background-color: beige;
+  margin: 30px auto;
+  border-radius: 30px;
+}
+
+.title {
+  font-family: "华文楷体";
+  width: 1167px;
+  margin: 1em auto;
+  text-align: center;
+  letter-spacing: 0.5rem;
+}
+
+.famensi{
+  width: 100%;
+  min-height: 175px;
+  max-height: 200px;
+  border-radius: 5px;
+}
+
+.museum {
+  color: #ffffff;
+  margin: 20px auto;
+  width: 66%;
+  height: 200px;
+
+  &-title {
+    margin: 20px 0;
+    display: inline-block;
+    width: 100%;
+  }
+
+  &-text {
+    padding: 20px;
+    background-color: #772a10;
+    min-height: 175px;
+    max-height: 200px;
+    overflow: auto;
+  }
+
+  &-intro {
     font-family: "微软雅黑 Light";
     font-weight: lighter;
     font-size: 14px;
+  }
+}
 
+@media screen and (max-width: 1000px) {
+  .museum-text {
+    height: 175px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .museum-text {
+    height: 200px;
+  }
+}
+
+.el-button,.el-button:hover,.el-button:active,.el-button:focus{
+  background: none;
+  color: #ffffff;
+  border-color:  #ffffff;
+}
+
+.visit{
+  color: #ffffff;
+  float: right;
 }
 </style>

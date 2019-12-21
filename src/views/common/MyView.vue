@@ -10,12 +10,9 @@ export default {
 
   },
   methods: {
-    logout: function() {
-      window.alert('Logout success.')
-      localStorage.removeItem('USER_TOKEN')
-      this.$router.push({
-        path: '/'
-      })
+    async logout() {
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/index`)
     }
   }
 }
