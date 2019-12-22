@@ -34,38 +34,68 @@ export const constantRoutes = [
 
   {
     path: '/',
+    redirect: '/index',
     component: () => import('@/views/common/IndexView.vue'),
     hidden: true,
     name: 'index',
     meta: {
-      title: '首    页'
+      title: '首页'
+    }
+  },
+
+  {
+    path: '/index',
+    component: () => import('@/views/common/IndexView.vue')
+  },
+
+  {
+    path: '/explore',
+    component: () => import('@/views/common/ExploreView.vue'),
+    hidden: true,
+    name: 'explore',
+    meta: {
+      title: '浏览'
+    }
+  },
+
+  {
+    path: '/nearby',
+    component: () => import('@/views/common/NearbyView.vue'),
+    hidden: true,
+    name: 'nearby',
+    meta: {
+      title: '附近'
+    }
+  },
+
+  {
+    path: '/search',
+    component: () => import('@/views/common/SearchView.vue'),
+    hidden: true,
+    name: 'search',
+    meta: {
+      title: '专业搜索'
+    }
+  },
+
+  {
+    path: '/my',
+    component: () => import('@/views/common/MyView.vue'),
+    hidden: true,
+    name: 'my',
+    meta: {
+      title: '个人资料'
     }
   },
 
   {
     path: '/login',
-    component: () => import('@/views/login/index'),
-    hidden: true
-  },
-
-  {
-    path: '/explore',
-    component: () => import('@/views/common/ExploreView.vue')
-  },
-
-  {
-    path: '/nearby',
-    component: () => import('@/views/common/NearbyView.vue')
-  },
-
-  {
-    path: '/my',
-    component: () => import('@/views/common/MyView.vue')
-  },
-
-  {
-    path: '/search',
-    component: () => import('@/views/common/SearchView.vue')
+    component: () => import('@/views/common/LoginView.vue'),
+    hidden: true,
+    name: 'login',
+    meta: {
+      title: '登录'
+    }
   },
 
   {
@@ -95,7 +125,6 @@ export const asyncRoutes = [
   {
     path: '/user',
     component: Layout,
-    redirect: '/user/user-list',
     name: 'User',
     meta: { title: '用户管理', icon: 'peoples' },
     children: [
@@ -117,7 +146,6 @@ export const asyncRoutes = [
   {
     path: '/relic',
     component: Layout,
-    redirect: '/relic',
     name: 'Relic',
     meta: { title: '文物管理', icon: 'peoples' },
     children: [
@@ -139,7 +167,6 @@ export const asyncRoutes = [
   {
     path: '/article',
     component: Layout,
-    redirect: '/article',
     name: 'Article',
     meta: { title: '文章管理', icon: 'message' },
     children: [

@@ -8,7 +8,7 @@
 
       <a href="/">
         <div class="float-left">
-          <el-menu-item class="disable-element-hover flo">首页</el-menu-item>
+          <el-menu-item class="disable-element-hover">首页</el-menu-item>
         </div>
       </a>
 

@@ -3,14 +3,14 @@
     <main-header />
 
     <el-row>
-      <div id="baidu-map">a</div>
+      <div id="baidu-map" />
     </el-row>
 
     <h1 class="title">附近的博物馆</h1>
 
     <div class="museum">
 
-      <el-row gutter="0" type="flex" justify="center">
+      <el-row :gutter="0" type="flex" justify="center">
 
         <el-col :span="10">
           <a href="#" class="img-museum">
@@ -38,7 +38,7 @@
 
     <div class="museum">
 
-      <el-row gutter="0" type="flex" justify="center">
+      <el-row :gutter="0" type="flex" justify="center">
 
         <el-col :span="10">
           <a href="#" class="img-museum"><img src="@/assets/index/Mask1.png" class="famensi"></a>

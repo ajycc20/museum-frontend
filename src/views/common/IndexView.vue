@@ -203,6 +203,11 @@ export default {
       screenWidth: ''
     }
   },
+  computed: {
+    insetMuseum() {
+      return '$@/inset-museum/index.html'
+    }
+  },
   watch: {
     // 监听浏览器窗口宽度
     screenWidth(val) {

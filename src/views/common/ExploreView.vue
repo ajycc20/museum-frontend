@@ -284,6 +284,7 @@ export default {
 <style>
 .explore-main-pic img {
   width: 100%;
+  padding: 25px;
 }
 
 .explore-badge {

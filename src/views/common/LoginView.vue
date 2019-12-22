@@ -6,7 +6,7 @@
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
         <div class="title-container">
-          <h3 class="title">Login Form</h3>
+          <h3 class="title">登录</h3>
         </div>
 
         <el-form-item prop="username">
@@ -185,7 +185,7 @@ $cursor: #fff;
 </style>
 
 <style lang="scss" scoped>
-$bg:#dee4eb;
+$bg:#f4f8f2;
 $dark_gray:#485358;
 $light_gray:rgb(58, 48, 48);
 
