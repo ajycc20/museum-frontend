@@ -37,7 +37,7 @@ export const constantRoutes = [
     redirect: '/index',
     component: () => import('@/views/common/IndexView.vue'),
     hidden: true,
-    name: 'index',
+    name: 'Index',
     meta: {
       title: '首页'
     }
@@ -52,7 +52,7 @@ export const constantRoutes = [
     path: '/explore',
     component: () => import('@/views/common/ExploreView.vue'),
     hidden: true,
-    name: 'explore',
+    name: 'Explore',
     meta: {
       title: '浏览'
     }
@@ -62,7 +62,7 @@ export const constantRoutes = [
     path: '/nearby',
     component: () => import('@/views/common/NearbyView.vue'),
     hidden: true,
-    name: 'nearby',
+    name: 'Nearby',
     meta: {
       title: '附近'
     }
@@ -72,7 +72,7 @@ export const constantRoutes = [
     path: '/search',
     component: () => import('@/views/common/SearchView.vue'),
     hidden: true,
-    name: 'search',
+    name: 'Search',
     meta: {
       title: '专业搜索'
     }
@@ -82,7 +82,7 @@ export const constantRoutes = [
     path: '/my',
     component: () => import('@/views/common/MyView.vue'),
     hidden: true,
-    name: 'my',
+    name: 'My',
     meta: {
       title: '个人资料'
     }
@@ -92,7 +92,7 @@ export const constantRoutes = [
     path: '/login',
     component: () => import('@/views/common/LoginView.vue'),
     hidden: true,
-    name: 'login',
+    name: 'Login',
     meta: {
       title: '登录'
     }
@@ -205,7 +205,7 @@ export const asyncRoutes = [
 ]
 
 const createRouter = () => new Router({
-  mode: 'history', // require service support
+  // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })

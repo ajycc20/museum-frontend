@@ -6,47 +6,47 @@
         <img class="menu-logo" src="@/assets/menu-logo.png">
       </el-menu-item>
 
-      <a href="/">
+      <router-link :to="{ name: 'Index' }">
         <div class="float-left">
           <el-menu-item class="disable-element-hover">首页</el-menu-item>
         </div>
-      </a>
+      </router-link>
 
-      <a href="/explore">
+      <router-link :to="{ name: 'Explore' }">
         <div class="float-left">
           <el-menu-item class="disable-element-hover">浏览</el-menu-item>
         </div>
-      </a>
+      </router-link>
 
-      <a href="/nearby">
+      <router-link :to="{ name: 'Nearby' }">
         <div class="float-left">
           <el-menu-item class="disable-element-hover">附近</el-menu-item>
         </div>
-      </a>
+      </router-link>
 
-      <a v-if="!isLogin" href="/login">
+      <router-link v-if="!isLogin" :to="{ name: 'Login' }">
         <div class="float-right">
           <el-menu-item class="disable-element-hover">登录</el-menu-item>
         </div>
-      </a>
+      </router-link>
 
-      <a v-else v-permission="['editor']" href="/my">
+      <router-link v-else v-permission="['editor']" :to="{ name: 'My' }">
         <div class="float-right">
           <el-menu-item class="disable-element-hover">个人资料</el-menu-item>
         </div>
-      </a>
+      </router-link>
 
-      <a v-permission="['admin']" href="/dashboard">
+      <router-link v-show="isLogin" v-permission="['admin']" :to="{ name: 'Dashboard' }">
         <div class="float-right">
           <el-menu-item class="disable-element-hover">后台管理</el-menu-item>
         </div>
-      </a>
+      </router-link>
 
-      <a href="/search">
+      <router-link :to="{ name: 'Search' }">
         <div class="float-right">
           <el-menu-item class="disable-element-hover">专业搜索</el-menu-item>
         </div>
-      </a>
+      </router-link>
 
       <div class="float-right">
         <el-menu-item class="disable-element-hover">
