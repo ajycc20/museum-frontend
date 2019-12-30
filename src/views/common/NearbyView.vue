@@ -78,7 +78,8 @@ export default {
     MainFooter
   },
   data() {
-
+    return {
+    }
   },
   mounted() {
     var map = new window.BMap.Map('baidu-map')

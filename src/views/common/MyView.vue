@@ -6,8 +6,9 @@
 
 <script>
 export default {
-  data: function() {
-
+  data() {
+    return {
+    }
   },
   methods: {
     async logout() {
