@@ -43,10 +43,11 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   response => {
+    const code = response.status
     const res = response.data
 
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    if (code !== 200) {
       Message({
         message: res.message || 'Error',
         type: 'error',
@@ -61,7 +62,7 @@ service.interceptors.response.use(
           cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
-          store.dispatch('user/resetToken').then(() => {
+          store.dispatch('auth/resetToken').then(() => {
             location.reload()
           })
         })

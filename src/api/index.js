@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getAntique(params) {
   return request({
-    url: '/index/selected-antique',
+    url: '/museum-antique/api/index/selected-antique',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getAntique(params) {
 
 export function getMuseumList(params) {
   return request({
-    url: '/index/museum-list',
+    url: '/museum-antique/api/index/museum-list',
     method: 'get',
     params
   })

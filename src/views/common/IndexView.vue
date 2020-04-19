@@ -162,6 +162,7 @@
 <script>
 import MainHeader from '@/components/MainHeader'
 import MainFooter from '@/components/MainFooter'
+import { getAntique, getMuseumList } from '@/api/index'
 export default {
   components: {
     MainHeader,
@@ -215,6 +216,10 @@ export default {
       this.height = x + 'em'
     }
   },
+  created() {
+    this.fetchAntique()
+    this.fetchMuseum()
+  },
   mounted() {
     window.onload = () => {
       return (() => {
@@ -227,6 +232,30 @@ export default {
         window.screenWidth = window.innerWidth
         this.screenWidth = window.screenWidth
       })()
+    }
+  },
+  methods: {
+    /**
+     * @description 请求精选文物列表
+     * @returns
+     */
+    fetchAntique() {
+      getAntique().then(res => {
+        console.log(res.data, '精选文物列表')
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    /**
+     * @description 请求博物馆列表
+     * @returns
+     */
+    fetchMuseum() {
+      getMuseumList().then(res => {
+        console.log(res.data, '博物馆列表')
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }

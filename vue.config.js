@@ -30,6 +30,7 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
+    sockHost: 'http://39.107.230.204:9000',
     port: port,
     overlay: {
       warnings: false,
@@ -39,14 +40,29 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://127.0.0.1:${port}/mock`,
+        // target: `http://127.0.0.1:${port}/mock`,
+        target: process.env.VUE_APP_BASE_API,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
+      },
+      '/museum-antique/api': {
+        target: process.env.VUE_APP_BASE_API + '/museum-antique/api',
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API + '/museum-antique/api']: ''
+        }
+      },
+      '/museum-user/api': {
+        target: process.env.VUE_APP_BASE_API + '/museum-user/api',
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API + '/museum-user/api']: ''
+        }
       }
-    },
-    after: require('./mock/mock-server.js')
+    }
+    // after: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
