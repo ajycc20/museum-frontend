@@ -2,8 +2,7 @@
   <div class="app-container">
     <el-table
       v-loading="listLoading"
-      :data="users"
-      element-loading-text="Loading"
+      :data="tableData"
       border
       fit
       highlight-current-row
@@ -65,18 +64,15 @@
         </template>
       </el-table-column>
     </el-table>
-    <br>
-    <div style="text-align: right">
-      <el-button @click="previous">上一页</el-button>
-      <span style="font-size: 90%">第 {{ offset + 1 }} 页</span>
-      <el-button @click="next">下一页</el-button>
-    </div>
+
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.offset" :limit.sync="listQuery.rows" @pagination="fetchUserList" />
+
   </div>
 </template>
 
 <script>
-// import { getList } from '@/api/table'
-import request from '@/utils/request'
+import { getUserList } from '@/api/user'
+import Pagination from '@/components/Pagination'
 
 export default {
   filters: {
@@ -89,85 +85,36 @@ export default {
       return statusMap[status]
     }
   },
+  components: {
+    Pagination
+  },
   data() {
     return {
-      users: null,
-      list: null,
+      tableData: null, // 用户列表
       listLoading: true,
       switchIsActive: true,
-      offset: 0
+      total: 100,
+      listQuery: {
+        offset: 0,
+        rows: 20
+      }
     }
   },
   created() {
-    this.fetchData()
+    this.fetchUserList()
   },
   methods: {
-    deleteUser(row) {
-      console.log(row.userId)
-      request
-        .get('/api/user/delete', {
-          params: {
-            'user-id': row.userId
-          }
-        })
-        .then(response => {
-          this.$router.go(0)
-        })
-    },
-    toggleStatus(row) {
-      console.log(row.userStatus)
-      request
-        .get('/api/user/toggle-status', {
-          params: {
-            'user-id': row.userId
-          }
-        })
-        .then(response => {
-          console.log(response)
-        })
-    },
-    fetchData() {
+    fetchUserList() {
       this.listLoading = true
-      request
-        .get('/api/user/list', {
-          params: {
-            offset: this.offset
-          }
-        })
-        .then(response => {
-          this.users = response.data.users
-          this.listLoading = false
-        })
-    },
-    previous() {
-      if (this.offset !== 0) {
-        this.offset--
-        request
-          .get('/api/user/list', {
-            params: {
-              offset: this.offset
-            }
-          })
-          .then(response => {
-            this.users = response.data.users
-            this.listLoading = false
-          })
-      }
-    },
-    next() {
-      if (this.users !== undefined) {
-        this.offset++
-        request
-          .get('/api/user/list', {
-            params: {
-              offset: this.offset
-            }
-          })
-          .then(response => {
-            this.users = response.data.users
-            this.listLoading = false
-          })
-      }
+      this.tableData = []
+      getUserList(this.listQuery).then(res => {
+        // console.log(res.data)
+        this.tableData = res.data
+        // this.total = res.data.length
+        this.listLoading = false
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
