@@ -54,6 +54,7 @@
     "svgo": "1.2.2",
     "vue-template-compiler": "2.6.10"
   },
+  "homepage": "https://ajycc20.github.io/museum-frontend",
   "engines": {
     "node": ">=8.9",
     "npm": ">= 3.0.0"
