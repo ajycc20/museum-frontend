@@ -102,7 +102,7 @@ export default {
       switchIsActive: true,
       total: 0,
       listQuery: {
-        offset: 0,
+        offset: 1,
         rows: 20
       }
     }
