@@ -16,7 +16,7 @@ jobs:
       run: yarn install && npm run build:prod
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: JamesIves/github-pages-deploy-action@3.4.8
       env:
         github_token: ${{ secrets.ACCESS_TOKEN }} 
         BRANCH: gh-pages
