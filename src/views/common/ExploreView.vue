@@ -224,6 +224,7 @@
 <script>
 import MainHeader from '@/components/MainHeader'
 import MainFooter from '@/components/MainFooter'
+import { getCategoryList, getThisWeekTheme, getPopularTopic } from '@/api/explore'
 
 export default {
   components: {
@@ -276,6 +277,34 @@ export default {
         forbiddenCity: '/',
         changanPalace: '/'
       }
+    }
+  },
+  created() {
+    this.fetchCategoryList()
+    this.fetchWeekTheme()
+    this.fetchPopularTopic()
+  },
+  methods: {
+    fetchCategoryList() {
+      getCategoryList({ topicType:'' }).then(res => {
+        console.log(res, '分类浏览')
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    fetchWeekTheme() {
+      getThisWeekTheme().then(res => {
+        console.log(res, '本周主题')
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    fetchPopularTopic() {
+      getPopularTopic().then(res => {
+        console.log(res, '热门主题')
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }

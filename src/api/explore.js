@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getCategoryList(params) {
   return request({
-    url: '/explore/category-list',
+    url: '/museum-exhibition/explore/category-list',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getCategoryList(params) {
 
 export function getThisWeekTheme(params) {
   return request({
-    url: '/explore/this-week-theme',
+    url: '/museum-exhibition/explore/this-week-theme',
     method: 'get',
     params
   })
@@ -18,7 +18,7 @@ export function getThisWeekTheme(params) {
 
 export function getPopularTopic(params) {
   return request({
-    url: '/explore/popular-topic',
+    url: '/museum-exhibition/explore/popular-topic',
     method: 'get',
     params
   })
