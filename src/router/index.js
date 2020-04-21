@@ -145,7 +145,7 @@ export const asyncRoutes = [
         path: 'edit-user/:id',
         name: 'EditUser',
         component: () => import('@/views/user/edit'),
-        meth: { title: '编辑用户', icon: 'edit' }
+        meth: { title: '编辑用户', icon: 'edit', activeMenu: '/user' }
       }
     ]
   },
@@ -165,32 +165,39 @@ export const asyncRoutes = [
       {
         path: 'create-relic',
         name: 'CreateRelic',
-        component: () => import('@/views/antique/CreateAntique'),
+        component: () => import('@/views/antique/create'),
         meta: { title: '创建文物', icon: 'guide' }
+      },
+      {
+        path: 'edit-relic/:id',
+        name: 'EditRelic',
+        hidden: true,
+        component: () => import('@/views/antique/edit'),
+        meta: { title: '编辑文物', icon: 'edit', activeMenu: '/relic' }
       }
     ]
   },
 
-  {
-    path: '/article',
-    component: Layout,
-    name: 'Article',
-    meta: { title: '文章管理', icon: 'message' },
-    children: [
-      {
-        path: 'article-list',
-        name: 'ArticleList',
-        component: () => import('@/views/news/NewsList'),
-        meta: { title: '文章列表', icon: 'table' }
-      },
-      {
-        path: 'create-article',
-        name: 'CreateArticle',
-        component: () => import('@/views/news/CreateNews'),
-        meta: { title: '创建文章', icon: 'tab' }
-      }
-    ]
-  },
+  // {
+  //   path: '/article',
+  //   component: Layout,
+  //   name: 'Article',
+  //   meta: { title: '文章管理', icon: 'message' },
+  //   children: [
+  //     {
+  //       path: 'article-list',
+  //       name: 'ArticleList',
+  //       component: () => import('@/views/news/NewsList'),
+  //       meta: { title: '文章列表', icon: 'table' }
+  //     },
+  //     {
+  //       path: 'create-article',
+  //       name: 'CreateArticle',
+  //       component: () => import('@/views/news/CreateNews'),
+  //       meta: { title: '创建文章', icon: 'tab' }
+  //     }
+  //   ]
+  // },
 
   {
     path: 'external-link',

@@ -53,9 +53,9 @@
       </el-table-column>
 
       <el-table-column label="操作" align="center" width="200">
-        <template #default="scope">
-          <el-button type="primary" icon="el-icon-edit" @click="editUser(scope.row)" />
-          <el-button type="primary" icon="el-icon-delete" @click="deleteUserFunc(scope.$index, scope.row, tableData)" />
+        <template #default="{ row }">
+          <el-button type="primary" icon="el-icon-edit" @click="editUser(row.userId)" />
+          <el-button type="primary" icon="el-icon-delete" @click="deleteUserFunc(row.userId)" />
         </template>
       </el-table-column>
     </el-table>
@@ -112,7 +112,6 @@ export default {
       this.listLoading = true
       this.tableData = []
       getUserList(this.listQuery).then(res => {
-        // console.log(res.data)
         this.tableData = res.data
         this.total = res.total
         this.listLoading = false
@@ -120,15 +119,15 @@ export default {
         console.log(err)
       })
     },
-    editUser(row) {
-      console.log(row)
-      this.$router.push('/user/edit-user/' + row.userId)
+    editUser(id) {
+      // console.log(row)
+      this.$router.push('/user/edit-user/' + id)
     },
-    deleteUserFunc(index, row, data) {
-      console.log(index, row)
+    deleteUserFunc(id) {
+      // console.log(index, row)
       this.deleteQuery = {
         currentUserId: getUserId(),
-        userId: row.userId
+        userId: id
       }
       deleteUser(this.deleteQuery).then(res => {
         if (res.code === 200) {
@@ -138,7 +137,7 @@ export default {
             type: 'success',
             duration: 2000
           })
-          data.splice(data, 1)
+          this.fetchUserList()
         }
       })
     }

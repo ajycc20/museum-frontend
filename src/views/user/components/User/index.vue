@@ -55,7 +55,7 @@
 
 <script>
 import { getUserId } from '@/utils/auth'
-import { getUserDetails, EditUser, AddUser } from '@/api/user'
+import { getUserDetails, editUser, addUser } from '@/api/user'
 
 const defaultForm = {
   userId: undefined,
@@ -140,7 +140,7 @@ export default {
         updater: getUserId()
       })
       if (this.isEdit) {
-        EditUser(getUserId(), this.form).then(res => {
+        editUser(getUserId(), this.form).then(res => {
           if (res.code === 200) {
             this.$notify({
               title: '成功',
@@ -158,7 +158,7 @@ export default {
           }
         })
       } else {
-        AddUser(getUserId(), this.form).then(res => {
+        addUser(getUserId(), this.form).then(res => {
           if (res.code === 200) {
             this.$notify({
               title: '成功',
