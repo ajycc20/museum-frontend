@@ -10,14 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+      with:
+        persist-credentials: false
     
     - name: Install and Build
-      run: yarn install && npm run build:prod
+      run: |
+        npm install
+        npm run build:prod
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.4.8
       env:
-        github_token: ${{ secrets.ACCESS_TOKEN }} 
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
         BRANCH: gh-pages
         FOLDER: dist
