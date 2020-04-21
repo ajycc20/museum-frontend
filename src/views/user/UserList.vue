@@ -52,18 +52,10 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="操作" align="center">
-        <template #default="{ row }">
-          <span>
-            <a><i class="el-icon-delete" @click="deleteUser(row)" /></a>
-            &nbsp;&nbsp;
-            <el-switch
-              v-model="row.userStatus"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-              @change="toggleStatus(row)"
-            />
-          </span>
+      <el-table-column label="操作" align="center" width="200">
+        <template #default="scope">
+          <el-button type="primary" icon="el-icon-edit" @click="editUser(scope.row)" />
+          <el-button type="primary" icon="el-icon-delete" @click="deleteUserFunc(scope.$index, scope.row, tableData)" />
         </template>
       </el-table-column>
     </el-table>
@@ -74,7 +66,8 @@
 </template>
 
 <script>
-import { getUserList } from '@/api/user'
+import { getUserList, deleteUser } from '@/api/user'
+import { getUserId } from '@/utils/auth'
 import Pagination from '@/components/Pagination'
 import { parseTime } from '@/utils'
 
@@ -101,9 +94,13 @@ export default {
       listLoading: true,
       switchIsActive: true,
       total: 0,
-      listQuery: {
+      listQuery: { // 请求的用户列表数据集
         offset: 1,
         rows: 20
+      },
+      deleteQuery: { // 删除用户时传递的参数
+        currentUserId: undefined,
+        userId: undefined
       }
     }
   },
@@ -121,6 +118,28 @@ export default {
         this.listLoading = false
       }).catch(err => {
         console.log(err)
+      })
+    },
+    editUser(row) {
+      console.log(row)
+      this.$router.push('/user/edit-user/' + row.userId)
+    },
+    deleteUserFunc(index, row, data) {
+      console.log(index, row)
+      this.deleteQuery = {
+        currentUserId: getUserId(),
+        userId: row.userId
+      }
+      deleteUser(this.deleteQuery).then(res => {
+        if (res.code === 200) {
+          this.$notify({
+            title: '成功',
+            message: '该用户已删除',
+            type: 'success',
+            duration: 2000
+          })
+          data.splice(data, 1)
+        }
       })
     }
   }
