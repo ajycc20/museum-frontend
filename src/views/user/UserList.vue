@@ -5,60 +5,63 @@
       :data="tableData"
       border
       fit
+      stripe
       highlight-current-row
     >
-      <el-table-column align="center" width="300" label="ID">
-        <template slot-scope="scope">{{ scope.row.userId }}</template>
+      <el-table-column align="center" type="selection" />
+
+      <el-table-column align="center" label="ID" width="auto">
+        <template #default="{ row }">{{ row.userId }}</template>
       </el-table-column>
 
-      <el-table-column label="用户名" width="150" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.userName }}</span>
+      <el-table-column label="用户名" align="center">
+        <template #default="{ row }">
+          <span>{{ row.userName }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="邮箱" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.email }}</span>
+        <template #default="{ row }">
+          <span>{{ row.email }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" prop="created_at" label="创建时间" width="150">
-        <template slot-scope="scope">
+      <el-table-column align="center" prop="created_at" label="创建时间" width="180">
+        <template #default="{ row }">
           <i class="el-icon-time" />
-          <span>{{ scope.row.createDate }}</span>
+          <span>{{ row.createDate | formatLocalTime(row.createDate) }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" prop="created_at" label="更新时间" width="150">
-        <template slot-scope="scope">
+      <el-table-column align="center" prop="created_at" label="更新时间" width="180">
+        <template #default="{ row }">
           <i class="el-icon-time" />
-          <span>{{ scope.row.updateDate }}</span>
+          <span>{{ row.updateDate | formatLocalTime(row.updateDate) }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="创建者" width="150" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.creator }}</span>
+      <el-table-column label="创建者" align="center">
+        <template #default="{ row }">
+          <span>{{ row.creator }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="更新者" width="150" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.updater }}</span>
+      <el-table-column label="更新者" align="center">
+        <template #default="{ row }">
+          <span>{{ row.updater }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column label="操作" width="180" align="center">
-        <template slot-scope="scope">
+      <el-table-column label="操作" align="center">
+        <template #default="{ row }">
           <span>
-            <a><i class="el-icon-delete" @click="deleteUser(scope.row)" /></a>
+            <a><i class="el-icon-delete" @click="deleteUser(row)" /></a>
             &nbsp;&nbsp;
             <el-switch
-              v-model="scope.row.userStatus"
+              v-model="row.userStatus"
               active-color="#13ce66"
               inactive-color="#ff4949"
-              @change="toggleStatus(scope.row)"
+              @change="toggleStatus(row)"
             />
           </span>
         </template>
@@ -73,6 +76,7 @@
 <script>
 import { getUserList } from '@/api/user'
 import Pagination from '@/components/Pagination'
+import { parseTime } from '@/utils'
 
 export default {
   filters: {
@@ -83,6 +87,9 @@ export default {
         deleted: 'danger'
       }
       return statusMap[status]
+    },
+    formatLocalTime(time) {
+      return parseTime(time)
     }
   },
   components: {
@@ -93,7 +100,7 @@ export default {
       tableData: null, // 用户列表
       listLoading: true,
       switchIsActive: true,
-      total: 100,
+      total: 0,
       listQuery: {
         offset: 0,
         rows: 20
@@ -110,7 +117,7 @@ export default {
       getUserList(this.listQuery).then(res => {
         // console.log(res.data)
         this.tableData = res.data
-        // this.total = res.data.length
+        this.total = res.total
         this.listLoading = false
       }).catch(err => {
         console.log(err)

@@ -201,7 +201,11 @@ export default {
       height: '28.5em',
       interval: 5000,
       // 屏幕宽度
-      screenWidth: ''
+      screenWidth: '',
+      testQuery: {
+        offset: 1,
+        rows: 20
+      }
     }
   },
   computed: {
@@ -251,7 +255,7 @@ export default {
      * @returns
      */
     fetchMuseum() {
-      getMuseumList().then(res => {
+      getMuseumList(this.testQuery).then(res => {
         console.log(res.data, '博物馆列表')
       }).catch(err => {
         console.log(err)
