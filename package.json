@@ -2,6 +2,7 @@
   "name": "museum-frontend",
   "version": "0.0.1",
   "description": "A vue project",
+  "homepage": "https://ajycc20.github.io/museum-frontend",
   "author": "ajycc20 <ajycc20@qq.com>",
   "license": "MIT",
   "scripts": {
@@ -54,7 +55,6 @@
     "svgo": "1.2.2",
     "vue-template-compiler": "2.6.10"
   },
-  "homepage": "https://ajycc20.github.io/museum-frontend",
   "engines": {
     "node": ">=8.9",
     "npm": ">= 3.0.0"
