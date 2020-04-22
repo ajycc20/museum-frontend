@@ -126,6 +126,7 @@ export const asyncRoutes = [
   {
     path: '/personal',
     component: Layout,
+    redirect: '/personal/index',
     hidden: true,
     children: [
       {

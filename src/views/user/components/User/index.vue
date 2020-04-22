@@ -19,11 +19,11 @@
         </el-col>
       </el-form-item>
 
-      <el-form-item label="密码">
+      <!-- <el-form-item label="密码">
         <el-col :span="11">
           <el-input v-model="form.password" show-password />
         </el-col>
-      </el-form-item>
+      </el-form-item> -->
 
       <el-form-item label="角色">
         <el-col :span="11">
@@ -61,7 +61,7 @@ const defaultForm = {
   userId: undefined,
   userName: '',
   email: '',
-  password: '',
+  // password: '',
   role: '',
   museumId: '',
   creator: '',
@@ -121,7 +121,7 @@ export default {
           userId: res.data.userId,
           userName: res.data.userName,
           email: res.data.email,
-          password: undefined,
+          // password: undefined,
           role: res.data.role,
           museumId: res.data.museumId,
           creator: res.data.creator,
@@ -140,6 +140,7 @@ export default {
         updater: getUserId()
       })
       if (this.isEdit) {
+        console.log(this.form)
         editUser(getUserId(), this.form).then(res => {
           if (res.code === 200) {
             this.$notify({
