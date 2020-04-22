@@ -154,7 +154,7 @@ export const asyncRoutes = [
     path: '/relic',
     component: Layout,
     name: 'Relic',
-    meta: { title: '文物管理', icon: 'peoples' },
+    meta: { title: '文物管理', icon: 'antique' },
     children: [
       {
         path: 'relic-list',

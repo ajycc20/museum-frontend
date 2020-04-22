@@ -36,7 +36,7 @@
         </div>
       </router-link>
 
-      <router-link v-show="isLogin" v-permission="['admin']" :to="{ name: 'Dashboard' }">
+      <router-link v-if="isLogin" v-permission="['admin']" :to="{ name: 'Dashboard' }">
         <div class="float-right">
           <el-menu-item class="disable-element-hover">后台管理</el-menu-item>
         </div>

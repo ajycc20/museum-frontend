@@ -8,7 +8,7 @@
       stripe
       highlight-current-row
     >
-      <el-table-column align="center" type="selection" />
+      <!-- <el-table-column align="center" type="selection" /> -->
 
       <el-table-column align="center" label="ID" width="auto">
         <template #default="{ row }">{{ row.userId }}</template>

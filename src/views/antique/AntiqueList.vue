@@ -8,6 +8,7 @@
       stripe
       highlight-current-row
     >
+      <!-- <el-table-column align="center" type="selection" /> -->
       <el-table-column align="center" label="序列号">
         <template #default="{ row }">{{ row.seqNo }}</template>
       </el-table-column>
@@ -40,7 +41,7 @@
         <template #default="{ row }">{{ row.updateDate | formatLocalTime(row.updateDate) }}</template>
       </el-table-column>
 
-      <el-table-column label="操作" align="center">
+      <el-table-column label="操作" align="center" width="200">
         <template #default="{ row }">
           <el-button type="primary" icon="el-icon-edit" @click="editAntique(row.antiqueId)" />
           <el-button type="primary" icon="el-icon-delete" @click="deleteAntiqueFunc(row.antiqueId)" />

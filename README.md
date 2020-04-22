@@ -52,4 +52,4 @@ npm run lint -- --fix
 
 ### 在线预览
 
-[点击预览](https://ajycc20.github.io/museum)
+[点击预览](https://ajycc20.github.io/museum-frontend)

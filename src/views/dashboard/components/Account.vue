@@ -17,6 +17,7 @@ import { editUser } from '@/api/user'
 import { getUserId } from '@/utils/auth'
 
 export default {
+  inject: ['reload'],
   props: {
     user: {
       type: Object,
@@ -34,24 +35,25 @@ export default {
         updateDate: new Date().getTime(),
         updater: getUserId()
       })
-      console.log(this.user)
-      // editUser(getUserId(), this.user).then(res => {
-      //   if (res.code === 200) {
-      //     this.$notify({
-      //       title: '成功',
-      //       message: '用户信息已编辑',
-      //       type: 'success',
-      //       duration: 5000
-      //     })
-      //     this.$router.push('/dashboard/index')
-      //   } else {
-      //     this.$notify({
-      //       title: 'Error',
-      //       type: 'error',
-      //       duration: 2000
-      //     })
-      //   }
-      // })
+      // console.log(this.user)
+      editUser(getUserId(), this.user).then(res => {
+        if (res.code === 200) {
+          this.$notify({
+            title: '成功',
+            message: '用户信息已编辑',
+            type: 'success',
+            duration: 5000
+          })
+          // this.$router.go(0)
+          this.reload()
+        } else {
+          this.$notify({
+            title: 'Error',
+            type: 'error',
+            duration: 2000
+          })
+        }
+      })
     }
   }
 }
