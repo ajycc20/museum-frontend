@@ -22,7 +22,9 @@
         <div class="user-bio-section-header"><svg-icon icon-class="education" /><span>User Info</span></div>
         <div class="user-bio-section-body">
           <div class="text-muted">
-            西北大学信息科学与技术学院软件工程
+            上次登录时间： {{ lastLoginDate }}
+            <br />
+            上次登录地点： {{ lastLoginArea }}
           </div>
         </div>
       </div>
@@ -46,6 +48,12 @@ export default {
           roles: ''
         }
       }
+    }
+  },
+  data() {
+    return {
+      lastLoginDate: '2020-04-22',
+      lastLoginArea: '西安'
     }
   }
 }

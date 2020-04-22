@@ -124,21 +124,6 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/personal',
-    component: Layout,
-    redirect: '/personal/index',
-    hidden: true,
-    children: [
-      {
-        path: 'index',
-        name: 'Personal',
-        component: () => import('@/views/personal/index'),
-        meta: { title: '个人信息', icon: 'people' }
-      }
-    ]
-  },
-
-  {
     path: '/user',
     component: Layout,
     name: 'User',

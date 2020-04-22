@@ -29,23 +29,13 @@ export default {
     }
   },
   methods: {
-    test() {
-      editUser()
-    },
     submit() {
       this.user = Object.assign(this.user, {
         updateDate: new Date().getTime(),
         updater: getUserId()
       })
       console.log(this.user)
-      this.$notify({
-        title: '成功',
-        message: '已编辑',
-        type: 'success',
-        duration: 5000
-      })
-
-      // editUser(getUserId(), this.form).then(res => {
+      // editUser(getUserId(), this.user).then(res => {
       //   if (res.code === 200) {
       //     this.$notify({
       //       title: '成功',
@@ -53,7 +43,7 @@ export default {
       //       type: 'success',
       //       duration: 5000
       //     })
-      //     this.$router.push('/personal/index')
+      //     this.$router.push('/dashboard/index')
       //   } else {
       //     this.$notify({
       //       title: 'Error',

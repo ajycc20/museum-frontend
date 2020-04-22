@@ -7,25 +7,25 @@
         </el-col>
       </el-form-item>
 
-      <el-form-item label="用户名">
+      <el-form-item label="用户名" prop="userName">
         <el-col :span="11">
           <el-input v-model="form.userName" />
         </el-col>
       </el-form-item>
 
-      <el-form-item label="邮箱">
+      <el-form-item label="邮箱" prop="email">
         <el-col :span="11">
           <el-input v-model="form.email" />
         </el-col>
       </el-form-item>
 
-      <!-- <el-form-item label="密码">
+      <el-form-item label="密码" prop="password">
         <el-col :span="11">
           <el-input v-model="form.password" show-password />
         </el-col>
-      </el-form-item> -->
+      </el-form-item>
 
-      <el-form-item label="角色">
+      <el-form-item label="角色" prop="role">
         <el-col :span="11">
           <el-select v-model="form.role" clearable>
             <el-option v-for="item in roleList" :key="item.value" :label="item.label" :value="item.value" />
@@ -33,7 +33,7 @@
         </el-col>
       </el-form-item>
 
-      <el-form-item label="所属博物馆">
+      <el-form-item label="所属博物馆" prop="museumId">
         <el-col :span="11">
           <el-input v-model="form.museumId" />
         </el-col>
@@ -61,7 +61,7 @@ const defaultForm = {
   userId: undefined,
   userName: '',
   email: '',
-  // password: '',
+  password: '',
   role: '',
   museumId: '',
   creator: '',
@@ -96,7 +96,7 @@ export default {
         userName: [{ validator: validateRequire }],
         email: [{ validator: validateRequire }],
         password: [{ validator: validateRequire }],
-        creator: [{ validator: validateRequire }]
+        role: [{ validator: validateRequire }]
       },
       tempRoute: {},
       roleList: [
@@ -121,7 +121,7 @@ export default {
           userId: res.data.userId,
           userName: res.data.userName,
           email: res.data.email,
-          // password: undefined,
+          password: '',
           role: res.data.role,
           museumId: res.data.museumId,
           creator: res.data.creator,
@@ -139,44 +139,51 @@ export default {
         updateDate: new Date().getTime(),
         updater: getUserId()
       })
-      if (this.isEdit) {
-        console.log(this.form)
-        editUser(getUserId(), this.form).then(res => {
-          if (res.code === 200) {
-            this.$notify({
-              title: '成功',
-              message: '用户信息已编辑',
-              type: 'success',
-              duration: 2000
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          if (this.isEdit) {
+            console.log(this.form)
+            editUser(getUserId(), this.form).then(res => {
+              if (res.code === 200) {
+                this.$notify({
+                  title: '成功',
+                  message: '用户信息已编辑',
+                  type: 'success',
+                  duration: 2000
+                })
+                this.$router.push('/user/user-list')
+              } else {
+                this.$notify({
+                  title: 'Error',
+                  type: 'error',
+                  duration: 2000
+                })
+              }
             })
-            this.$router.push('/user/user-list')
           } else {
-            this.$notify({
-              title: 'Error',
-              type: 'error',
-              duration: 2000
+            addUser(getUserId(), this.form).then(res => {
+              if (res.code === 200) {
+                this.$notify({
+                  title: '成功',
+                  message: '用户已创建',
+                  type: 'success',
+                  duration: 2000
+                })
+                this.$router.push('/user/user-list')
+              } else {
+                this.$notify({
+                  title: 'Error',
+                  type: 'error',
+                  duration: 2000
+                })
+              }
             })
           }
-        })
-      } else {
-        addUser(getUserId(), this.form).then(res => {
-          if (res.code === 200) {
-            this.$notify({
-              title: '成功',
-              message: '用户已创建',
-              type: 'success',
-              duration: 2000
-            })
-            this.$router.push('/user/user-list')
-          } else {
-            this.$notify({
-              title: 'Error',
-              type: 'error',
-              duration: 2000
-            })
-          }
-        })
-      }
+        } else {
+          console.log('err submit')
+          return false
+        }
+      })
     },
     handleCancel() {
       this.$router.go(-1)

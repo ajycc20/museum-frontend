@@ -17,7 +17,7 @@
             </el-dropdown-item>
           </router-link>
 
-          <router-link to="/personal">
+          <router-link to="/dashboard">
             <el-dropdown-item>
               用户信息
             </el-dropdown-item>

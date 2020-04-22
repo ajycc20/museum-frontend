@@ -30,7 +30,7 @@
         </div>
       </router-link>
 
-      <router-link v-else v-permission="['editor']" :to="{ name: 'My' }">
+      <router-link v-else v-permission="['user']" :to="{ name: 'My' }">
         <div class="float-right">
           <el-menu-item class="disable-element-hover">个人资料</el-menu-item>
         </div>
