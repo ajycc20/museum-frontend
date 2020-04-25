@@ -12,8 +12,8 @@
         </pan-thumb>
       </div>
       <div class="box-center">
-        <div class="user-name text-center">{{ user.name }}</div>
-        <div class="user-role text-center text-muted">{{ user.role }}</div>
+        <div class="user-name text-center">用户名：{{ user.userName }}</div>
+        <div class="user-role text-center text-muted">用户角色：{{ user.role }}</div>
       </div>
     </div>
 
@@ -42,7 +42,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: '',
+          userName: '',
           email: '',
           avatar: '',
           roles: ''
