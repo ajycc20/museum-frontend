@@ -58,6 +58,13 @@ export const constantRoutes = [
   },
 
   {
+    path: '/exp/:key',
+    hidden: true,
+    name: 'Exp',
+    component: () => import('@/views/common/component/Explore.vue')
+  },
+
+  {
     path: '/nearby',
     component: () => import('@/views/common/NearbyView.vue'),
     hidden: true,
