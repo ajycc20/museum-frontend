@@ -62,14 +62,6 @@ import { parseTime } from '@/utils'
 
 export default {
   filters: {
-    statusFilter(status) {
-      const statusMap = {
-        online: 'success',
-        offline: 'gray',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    },
     formatLocalTime(time) {
       return parseTime(time)
     }

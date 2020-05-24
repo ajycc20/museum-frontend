@@ -286,7 +286,7 @@ export default {
   },
   methods: {
     fetchCategoryList() {
-      getCategoryList({ topicType:'' }).then(res => {
+      getCategoryList({ topicType: '' }).then(res => {
         console.log(res, '分类浏览')
       }).catch(err => {
         console.log(err)

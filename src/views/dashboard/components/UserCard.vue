@@ -23,7 +23,7 @@
         <div class="user-bio-section-body">
           <div class="text-muted">
             上次登录时间： {{ lastLoginDate }}
-            <br />
+            <br>
             上次登录地点： {{ lastLoginArea }}
           </div>
         </div>
