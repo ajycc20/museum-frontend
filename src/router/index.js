@@ -85,16 +85,6 @@ export const constantRoutes = [
   },
 
   {
-    path: '/my',
-    component: () => import('@/views/common/MyView.vue'),
-    hidden: true,
-    name: 'My',
-    meta: {
-      title: '个人资料'
-    }
-  },
-
-  {
     path: '/login',
     component: () => import('@/views/common/LoginView.vue'),
     hidden: true,
@@ -184,27 +174,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
-  // {
-  //   path: '/article',
-  //   component: Layout,
-  //   name: 'Article',
-  //   meta: { title: '文章管理', icon: 'message' },
-  //   children: [
-  //     {
-  //       path: 'article-list',
-  //       name: 'ArticleList',
-  //       component: () => import('@/views/news/NewsList'),
-  //       meta: { title: '文章列表', icon: 'table' }
-  //     },
-  //     {
-  //       path: 'create-article',
-  //       name: 'CreateArticle',
-  //       component: () => import('@/views/news/CreateNews'),
-  //       meta: { title: '创建文章', icon: 'tab' }
-  //     }
-  //   ]
-  // },
 
   {
     path: 'external-link',

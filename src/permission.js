@@ -8,7 +8,7 @@ import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = ['/login', '/', '/index', '/nearby', '/search', '/my', '/explore', '/404'] // no redirect whitelist
+const whiteList = ['/login', '/', '/index', '/nearby', '/search', '/explore', '/404'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   // start progress bar
@@ -58,13 +58,9 @@ router.beforeEach(async(to, from, next) => {
   } else {
     /* has no token*/
 
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (whiteList.indexOf(to.path) !== -1 || to.path.indexOf('/exp/') !== -1) {
       // in the free login whitelist, go directly
-      if (to.path === '/my') {
-        next(`/index?redirect=${to.path}`)
-      } else {
-        next()
-      }
+      next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
       next(`/login?redirect=${to.path}`)

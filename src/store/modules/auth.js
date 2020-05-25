@@ -35,8 +35,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ userName: username.trim(), password: password }).then(response => {
         const { data } = response
-        console.log(data)
-        // commit('SET_TOKEN', data.token)
         commit('SET_TOKEN', data.userToken)
         commit('SET_USERID', data.userId)
         setToken(data.userToken)
@@ -54,7 +52,7 @@ const actions = {
       getInfo(state.userid).then(response => {
         const { data } = response
 
-        console.log(data)
+        // console.log(data)
 
         if (!data) {
           reject('Verification failed, please Login again.')
@@ -74,9 +72,6 @@ const actions = {
         commit('SET_ROLES', roles)
         commit('SET_NAME', userName)
 
-        // commit('SET_ROLES', roles)
-        // commit('SET_NAME', name)
-        // commit('SET_AVATAR', avatar)
         resolve(data)
       }).catch(error => {
         reject(error)
@@ -110,31 +105,6 @@ const actions = {
       resolve()
     })
   }
-
-  // dynamically modify permissions
-  // changeRoles({ commit, dispatch }, role) {
-  //   return new Promise(async resolve => {
-  //     const token = role + '-token'
-
-  //     commit('SET_TOKEN', token)
-  //     setToken(token)
-
-  //     const { roles } = await dispatch('getInfo')
-
-  //     resetRouter()
-
-  //     // generate accessible routes map based on roles
-  //     const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
-
-  //     // dynamically add accessible routes
-  //     router.addRoutes(accessRoutes)
-
-  //     // reset visited views and cached views
-  //     dispatch('tagsView/delAllViews', null, { root: true })
-
-  //     resolve()
-  //   })
-  // }
 }
 
 export default {
