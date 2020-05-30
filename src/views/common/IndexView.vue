@@ -22,7 +22,7 @@
 
       <div class="featured-antique">
 
-        <div class="antiques">
+        <div class="antiques" @click="dialogVisible = true">
           <a href="#" class="antique" @click.prevent="">
             <img src="@/assets/index/feature-1.png">
           </a>
@@ -39,6 +39,44 @@
             <img src="@/assets/index/feature-3.png">
           </a>
         </div>
+
+        <el-dialog
+          :title="fileName"
+          :visible.sync="dialogVisible"
+          center
+          width="80%"
+        >
+          <div class="antique-view-test">
+            <p>{{ fileDesc }}</p>
+            <div class="file-media">
+              <!-- 媒体文件 -->
+              <div class="file-left-i-a">
+                <!-- i: img  a: audio -->
+                <div class="file-img">
+                  <img :src="imgSrc" alt="查看文物测试">
+                </div>
+                <div class="file-audio">
+                  <audio controls="controls">
+                    <source :src="audioSrc" type="audio/mp3">
+                  </audio>
+                </div>
+              </div>
+              <div class="file-right-m">
+                <!-- m: model -->
+                <div class="file-model">
+                  这里是文物模型
+                  <model-obj
+                    :src="modelSrc"
+                    :width="600"
+                    :height="600"
+                    :position="modelPosition"
+                    :scale="{ x: 0.7, y: 0.7, z: 0.7 }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </el-dialog>
 
       </div>
 
@@ -162,11 +200,15 @@
 <script>
 import MainHeader from '@/components/MainHeader'
 import MainFooter from '@/components/MainFooter'
+import { ModelObj } from 'vue-3d-model'
+
 import { getAntique, getMuseumList } from '@/api/index'
+// import { getImg, getAudio, getModel } from '@/api/file'
 export default {
   components: {
     MainHeader,
-    MainFooter
+    MainFooter,
+    ModelObj
   },
   data() {
     return {
@@ -205,6 +247,18 @@ export default {
       testQuery: {
         offset: 1,
         rows: 20
+      },
+      dialogVisible: false,
+      fileInfo: null,
+      fileName: '',
+      fileDesc: '',
+      imgSrc: '',
+      audioSrc: '',
+      modelSrc: '',
+      modelPosition: {
+        x: 0,
+        y: 30,
+        z: 0
       }
     }
   },
@@ -245,7 +299,14 @@ export default {
      */
     fetchAntique() {
       getAntique().then(res => {
-        console.log(res.data, '精选文物列表')
+        console.log(res.data[0], '精选文物列表')
+        this.fileInfo = res.data[0]
+      }).then(_ => {
+        this.fileName = `${this.fileInfo['antiqueName']}`
+        this.fileDesc = `${this.fileInfo['antiqueDesc']}`
+        this.imgSrc = `${process.env.VUE_APP_BASE_API}/museum-antique/res${this.fileInfo['antiqueImg']}`
+        this.audioSrc = `${process.env.VUE_APP_BASE_API}/museum-antique/res${this.fileInfo['antiqueAudio']}`
+        this.modelSrc = `${process.env.VUE_APP_BASE_API}/museum-antique/res${this.fileInfo['antiqueModel']}`
       }).catch(err => {
         console.log(err)
       })
@@ -256,7 +317,7 @@ export default {
      */
     fetchMuseum() {
       getMuseumList(this.testQuery).then(res => {
-        console.log(res.data, '博物馆列表')
+        // console.log(res.data, '博物馆列表')
       }).catch(err => {
         console.log(err)
       })
@@ -270,6 +331,28 @@ export default {
   margin-top: 10px;
   &-img {
     border-radius: 10px;
+  }
+}
+
+// for the file view
+.el-dialog__body {
+  padding: 10px;
+}
+
+.file-media {
+  display: flex;
+  width: 100%;
+
+  .file-left-i-a {
+    width: 30%;
+  }
+
+  .file-right-m {
+    width: 70%;
+
+    .file-model {
+      height: 100%;
+    }
   }
 }
 
