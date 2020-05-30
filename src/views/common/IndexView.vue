@@ -91,28 +91,28 @@
       <div class="featured-museum">
 
         <div class="museums">
-          <a href="#" class="museum">
+          <a href="http://www.chnmuseum.cn/" target="_blank" class="museum">
             <img src="@/assets/index/Mask8.png">
             <span>中国国家博物馆</span>
           </a>
         </div>
 
         <div class="museums">
-          <a href="#" class="museum">
+          <a href="http://bmy.com.cn/" target="_blank" class="museum">
             <img src="@/assets/index/Mask6.png">
             <span>秦始皇帝陵博物馆</span>
           </a>
         </div>
 
         <div class="museums">
-          <a href="#" class="museum">
+          <a href="http://www.chinasilkmuseum.com/" target="_blank" class="museum">
             <img src="@/assets/index/Mask4.png">
             <span>中国丝绸博物馆</span>
           </a>
         </div>
 
         <div class="museums">
-          <a href="#" class="museum">
+          <a href="https://www.dpm.org.cn/Home.html" target="_blank" class="museum">
             <img src="@/assets/index/Mask2.png">
             <span>故宫博物院</span>
           </a>
@@ -123,14 +123,14 @@
       <div class="featured-museum">
 
         <div class="museums">
-          <a href="#" class="museum">
+          <a href="http://www.sxhm.com/" target="_blank" class="museum">
             <img src="@/assets/index/Mask7.png">
             <span>陕西省历史博物馆</span>
           </a>
         </div>
 
         <div class="museums">
-          <a href="#" class="museum">
+          <a href="http://www.szmuseum.com/" target="_blank" class="museum">
             <img src="@/assets/index/Mask5.png">
             <span>苏州博物馆</span>
           </a>
@@ -299,7 +299,7 @@ export default {
      */
     fetchAntique() {
       getAntique().then(res => {
-        console.log(res.data[0], '精选文物列表')
+        // console.log(res.data[0], '精选文物列表')
         this.fileInfo = res.data[0]
       }).then(_ => {
         this.fileName = `${this.fileInfo['antiqueName']}`
@@ -317,7 +317,7 @@ export default {
      */
     fetchMuseum() {
       getMuseumList(this.testQuery).then(res => {
-        // console.log(res.data, '博物馆列表')
+        console.log(res.data, '博物馆列表')
       }).catch(err => {
         console.log(err)
       })
